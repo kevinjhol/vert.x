@@ -20,7 +20,7 @@
   </parent>
 
   <artifactId>vertx-core</artifactId>
-  <version>3.8.5</version>
+  <version>3.8.5-netty5201workaround</version>
 
   <name>Vert.x Core</name>
 

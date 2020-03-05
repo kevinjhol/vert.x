@@ -183,13 +183,13 @@ class HttpChannelConnector implements ConnectionProvider<HttpClientConnection> {
     if (options.getLogActivity()) {
       pipeline.addLast("logging", new LoggingHandler());
     }
-    pipeline.addLast("codec", new HttpClientCodec(
+    pipeline.addLast("decoder", new HttpResponseDecoder(
       options.getMaxInitialLineLength(),
       options.getMaxHeaderSize(),
       options.getMaxChunkSize(),
       false,
-      false,
       options.getDecoderInitialBufferSize()));
+    pipeline.addLast("encoder", new HttpRequestEncoder());
     if (options.isTryUseCompression()) {
       pipeline.addLast("inflater", new HttpContentDecompressor(false));
     }
